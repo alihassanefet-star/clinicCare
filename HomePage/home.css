@@ -958,112 +958,6 @@ color: #0E2540;
     color: #ffffff;
 }
 
-.banner{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 40px 60px;
-    color: #ffffff;
-    border-radius: 25px;
-    background: linear-gradient(90deg,#0A2540 0% , #163e69 100%);
-    margin: 20px 0;
-    width: 90%;
-    margin-left: 50px;
-    margin-top: 50px;
-}
-
-.banner:hover{
-    transform: scale(1.02);
-}
-
-.banner-content{
-    max-width: 60%;
-}
-
-.banner-content h2{
-margin-bottom: 10px;
-}
-
-.banner-content p{
-    opacity: 0.8;
-}
-
-.banner-btn{
-    display: flex;
-    gap: 15px;
-}
-
-.btnn-login{
-    background: transparent;
-    padding: 12px 30px;
-    border: 1px solid white;
-    border-radius: 50px;
-    color: #ffffff;
-    cursor: pointer;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.btnn-register{
- padding: 12px 30px;
-  background: #2FD3C7; 
-  border: none;
-  border-radius: 50px;
-  color: #0a2540;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(32, 201, 151, 0.3);
-  text-decoration: none;
-}
-
-.btnn-login:hover{
-background-color:#ffffff ;
-color:#0a2540 ;
-}
-
-.btnn-register:hover{
-background-color:#0a2540 ;
-color: #ffffff;
-}
-
-.book-banner{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #0a2540;
-    border-radius: 20px;
-    border: 1px solid #2FD3C7 ;
-    background: transparent;
-    padding: 40px 60px;
-     width: 90%;
-    margin-left: 50px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-.book-banner:hover{
-    transform: scale(1.02);
-}
-
-.book-banner-content{
-    margin-bottom: 10px;
-}
-
-.btn-book{
-    background-color: #12365C;
-    color: #ffffff;
-    padding: 15px 30px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-.btn-book:hover{
-background-color: #2FD3C7;
-color: #12365C;
-}
-
-
 .footer {
   background-color: #05192d;
   color: white;
@@ -1173,3 +1067,4 @@ color: #12365C;
     display: none; 
     z-index: 1000;
 }
+    
