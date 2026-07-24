@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="appointment.css">
+    <title>Appointment</title>
+</head>
+<body>
+ 
+    <div class="header">
+    <nav class="navbar navbar-expand-md w-100 p-0">
+        <div class="logo">
+            <span class="logo-icon"><i class="fa-solid fa-tooth"></i></span>
+            <h2>SmileCare</h2>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="navbarContent">
+            <div class="navbar mx-auto">
+                <a href="../HomePage/home.html" class="active">Home</a>
+                <a href="../aboutPage/about.html">About Us</a>
+                <a href="../servicePage/services.html">Services</a>
+                <a href="../doctorPage/doctors.html" target="_blank">Doctors</a>
+                <a href="../articlePage/article.html">Articles</a>
+                <a href="../ecommercePage/ecommerce.html">Medical Store</a>
+                <a href="../contactPage/contactUs.html">Contact</a>
+            </div>
+
+            <div class="header-btns">
+                <a href="../aboutPage/login.html" class="btn-login">Login</a>
+                <a href="#" class="btn-register">register</a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+
+    
+    <div class="appoint border border-1 my-5 w-75 m-auto p-3 " >
+       
+        <h1 class="text-center fw-bolder  my-5" style="color:#1565D8 ;">Appointment</h1>
+        <p class="fw-bold text-light-emphasis text-center">Book your medical appointment in just a few simple steps. Our experienced  <br>healthcare professionals are ready to provide you with the best care<br> possible.</p>
+         <div class="iconp d-flex justify-content-around my-4">
+            <div class="iconc text-center ">
+                <h4>Select Service</h4>
+                <i class="fa-regular fa-calendar-check  rounded-3 fs-1 text-light text-center my-1" style="background-color: #1565D8;"></i>
+                <p class="my-1">choose a medical service you need</p>
+
+            </div>
+            <div class="iconc text-center ">
+                <h4>Pick Date & Time</h4>
+                <i class="fa-regular fa-clock  rounded-3 fs-1 text-light text-center my-1" style="background-color: #1565D8;"></i>
+
+                <p class="my-1">Select your preferred appointment slot</p>
+
+            </div>
+             <div class="iconc text-center ">
+                <h4>Confirm Details</h4>
+                <i class="fa-solid fa-user-check  rounded-3 fs-1 text-light text-center my-1" style="background-color: #1565D8;"></i>
+
+
+                <p class="my-1">Select your preferred appointment slot</p>
+
+            </div>
+            
+        </div> 
+    <div class="container w-50 my-5">
+
+        <form>
+        <label for="pname" class="fw-bold  ">Patient Name</label><br>
+        <input type="text" name="pname"  id="pname" class="form-control  my-2" >
+        <label for="email" class="fw-bold " >Email</label><br>
+        <input type="email" name="email"  id="email" class="form-control my-2" placeholder="example@gmail.com">
+        <label for="phone" class="fw-bold  ">Phone Number</label><br>
+        <input type="tel" name="phone"  id="phone" class="form-control my-2">
+         <select class="my-3 w-100" id="service" >
+            <option selected hidden  class="fw-bolder " > Select Service</option>
+            <option> dental checkup & cleaning</option>
+            <option> dental fillings</option>
+            <option> root canal treatment</option>
+            <option> teeth whitening</option>
+            <option> orthodontics</option>
+            <option> dental implants</option>
+            <option> tooth extraction</option>
+        </select>
+        <input type="date" name="date" class="w-100 my-2" id="date">
+        <input type="time" name="time" class="w-100 my-2 " id="time">
+        <select class="my-3 w-100" id="Doctor">
+            <option selected hidden  class="fw-bolder "> Select Doctor</option>
+            <option> dr.sarah mohamed</option>
+            <option> dr.michael george</option>
+            <option> dr.ahmed yasser</option>
+            <option> dr.menna mostafa</option>
+            <option> dr.mohamed sabry</option>
+            <option> dr.khaled ahmed</option>
+            <option> dr.mariam adel</option>
+        </select>
+         <textarea class="my-2 rounded-3 w-100" placeholder="additional notes or symptoms (optional)" cols="6" rows="5" id="notes"></textarea> 
+        </form>
+        <div class="button ">
+        <button class="btn   rounded-4 my-3 d-block" id="bookBtn" onclick="bookAppointment()" style="background-color: #1565D8; color: white;">Book Appointment </button>
+            <button class="btn  btn-success rounded-4 my-3 d-none" id="updateBtn" onclick="patientUpdate()">update </button>
+        </div>
+        <div class="warning bg-primary-subtle my-3 text-center"> 
+            <p>   <i class="fa-solid fa-triangle-exclamation text-danger"></i>
+          For medical emergencies, please call  <span class="text-danger">911</span> 
+          or go to the nearest emergency room.</p>
+        </div>
+
+    </div>
+    </div>
+    <div class=" table-responsive  w-76 m-auto my-5">
+    <table class="table">
+        <thead class="text-center">
+            <th>patient_name</th>
+             <th>Email</th>
+              <th>Phone_Number</th>
+              <th>service</th>
+                <th>Date</th>
+                <th>time</th>
+                 <th>Doctor</th>
+                    <th>symptoms</th>
+
+
+        </thead>
+        <tbody id="tableBody" class="text-center">
+          
+        </tbody>
+
+    </table>
+    </div>
+    
+    <br><br> <br> <br>
+
+    <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-text">
+        <h3><span class="icon-footer"><i class="fa-solid fa-tooth"></i></span> <span class="h-style">Smile</span>Care</h3>
+        <p>Modern, patient-first dental care for every stage of your smile's journey.</p>
+      </div>
+      <div class="social-footer-icons">
+        <i class="fa-brands fa-linkedin-in"></i>
+        <i class="fa-brands fa-facebook-f"></i>
+        <i class="fa-brands fa-youtube"></i>
+      </div>
+    </div>
+    <div class="footer-side-col">
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Doctors</a></li>
+          <li><a href="#">Articles</a></li>
+          <li><a href="#">Medical Store</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="teeth-whitening.html">Teeth Whitening</a></li>
+          <li><a href="implants.html">Dental Implants</a></li>
+          <li><a href="orthodontics.html">Orthodontics</a></li>
+          <li><a href="root-canal.html">Root Canal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-links-call">
+      <h4>Contact & Hours</h4>
+      <p><i class="fa-solid fa-phone"></i> +20 100 000 0000</p>
+      <p><i class="fa-solid fa-envelope"></i> hello@brightlinedental.com</p>
+      <p><i class="fa-solid fa-location-dot"></i> 15 Tahrir St, Cairo, Egypt</p>
+      <p><i class="fa-solid fa-clock"></i> Sat-Thu 9:00 AM - 8:00 PM</p>
+    </div>
+  </div>
+  <div class="footer-bottom ">
+    <p>© 2026 <span class="h-style">SmileCare.</span> All rights reserved.</p>
+    <div class="footer-last">
+      <span class="hover-word">Privacy Policy</span> <span class="hover-word">Terms of Use</span>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="appointment.js"></script>
+</body>
+</html>

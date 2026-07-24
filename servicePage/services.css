@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Tajawal', sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #0A2540;
+    overflow-x: hidden;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background-color: #FEFEFE;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid #81BCCE;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-right: auto;
+    margin-left: -20px;
+}
+
+.logo-icon {
+    background-color: #1565D8;
+    color: #ffffff;
+    padding: 12px 14px; 
+    border-radius: 10px; 
+    font-size: 22px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -30px;
+}
+.logo h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0A2540;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #0A2540;
+    margin: 0 12px;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.navbar a.active::after, .navbar a:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #1565D8;
+}
+
+.header-btns {
+    display: flex;
+    gap: 15px;
+    margin-left: 50px;
+}
+
+.btn-login {
+    text-decoration: none;
+    color: #0A2540;
+    padding: 10px 25px;
+    border: 1px solid #0A2540;
+    border-radius: 25px;
+}
+
+.btn-register {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #1565D8;
+    padding: 10px 25px;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(21, 101, 216, 0.3);
+}
+
+.btn-register:hover {
+    background-color: #0b4fa8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(21, 101, 216, 0.4);
+}
+
+.btn-login:hover {
+    background-color: #0A2540;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.footer {
+  background-color: #05192d;
+  color: white;
+  padding: 20px 154px;
+  font-family: sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.footer-content, .footer-side-col, .footer-links-call {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-side-col {
+  display: flex;
+  gap: 30px;
+}
+
+.footer-links h4, .footer-links-call h4 {
+  margin-bottom: 8px;
+  font-size: 17px;
+}
+
+.h-style {
+  color: #2FD3C7;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  line-height: 1.8;
+}
+
+.footer-links ul li a:hover {
+  color: #2FD3C7;
+}
+
+.footer-links-call p {
+  color: #ffffff;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.social-footer-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-footer-icons i {
+  background: #1a3a5a;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.social-footer-icons i:hover {
+  background-color: #2FD3C7;
+  color: #0D2540;
+}
+
+.footer-bottom {
+  border-top: 1px solid #1a3a5a;
+  margin-top: 15px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  color: #8899aa;
+  font-size: 14px;
+}
+
+.footer-last span {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.hover-word:hover {
+  color: #2FD3C7;
+}
+
+.Card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.Card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+.card-img-container {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.Card:hover .card-img-top {
+  transform: scale(1.06);
+}
+
+.price-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #0d6efd;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+}
+
+.btn-book {
+  border-radius: 25px;
+  font-weight: 600;
+  padding: 8px 18px;
+}
