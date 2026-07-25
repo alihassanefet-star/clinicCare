@@ -173,26 +173,26 @@ Cancel Appointment
 }
 
 function attachEvents(user) {
-  const container = document.getElementById("dashAppointmentsList");
 
-  if (!container) {
-    return;
-  }
+    let container = document.getElementById("dashAppointmentsList");
 
-  container.addEventListener("click", function (event) {
-    if (event.target.classList.contains("cancel-btn")) {
-
-    cancelAppointment(Number(event.target.dataset.id), user);
-
-    }
-    if (!button) {
-      return;
+    if (!container) {
+        return;
     }
 
-    cancelAppointment(Number(button.dataset.id), user);
-  });
+    container.addEventListener("click", function (event) {
+
+        if (event.target.classList.contains("cancel-btn")) {
+
+            let id = Number(event.target.dataset.id);
+
+            cancelAppointment(id, user);
+
+        }
+
+    });
+
 }
-
 function cancelAppointment(id, user) {
   let appointments = [];
 
