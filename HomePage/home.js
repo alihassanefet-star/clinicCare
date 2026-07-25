@@ -61,7 +61,7 @@ function displayArticles(articlesList) {
                     <span class="blog-date">${article.date}</span>
                     <h3>${article.title}</h3>
                     <p class="articles-content-p">${article.text.substring(0, 90)}...</p>
-                    <a href="#" target="_blank">Read More <i class="fa-solid fa-arrow-right-long"></i></a>
+                    <a href="../articlePage/article.html" target="_blank">Read More <i class="fa-solid fa-arrow-right-long"></i></a>
                 </div>
             </div>
         `;
