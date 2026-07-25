@@ -12,16 +12,39 @@
     <link rel="stylesheet" href="css/all.min.css" />
 
     <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="../HomePage/home.css" />
 
-    <link rel="stylesheet" href="css/navbar.css" />
-    <link rel="stylesheet" href="css/footer.css" />
 
     <link rel="stylesheet" href="css/doctors.css" />
   </head>
 
   <body>
-    <div id="navbarContainer"></div>
+<div class="header">
+    <div class="logo">
+        <span class="logo-icon">
+            <i class="fa-solid fa-tooth"></i>
+        </span>
+        <h2>SmileCare</h2>
+    </div>
 
+    <input type="checkbox" id="menu-toggle" class="menu-checkbox" hidden>
+
+    <label for="menu-toggle" class="menu-toggle-label">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="../aboutPage/about.html">About Us</a>
+        <a href="../servicePage/services.html">Services</a>
+        <a href="doctors.html" class="active">Doctors</a>
+        <a href="../articlePage/article.html">Articles</a>
+        <a href="../ecommercePage/ecommerce.html">Medical Store</a>
+        <a href="../contactPage/contactUs.html">Contact</a>
+    </nav>
+</div>
     <main class="container pt-5 pb-5 mt-5">
       <section class="text-center mb-5">
         <h1 class="fw-bold fw-bold">Find Your Dentist</h1>
@@ -130,12 +153,60 @@
       <section id="doctorList" class="row g-4"></section>
     </main>
 
-    <div id="footerContainer"></div>
+      <!-- footer -->
+    <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-text">
+        <h3><span class="icon-footer"><i class="fa-solid fa-tooth"></i></span> <span class="h-style">Smile</span>Care</h3>
+        <p>Modern, patient-first dental care for every stage of your smile's journey.</p>
+      </div>
+      <div class="social-footer-icons">
+        <i class="fa-brands fa-linkedin-in"></i>
+        <i class="fa-brands fa-facebook-f"></i>
+        <i class="fa-brands fa-youtube"></i>
+      </div>
+    </div>
+    <div class="footer-side-col">
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Doctors</a></li>
+          <li><a href="#">Articles</a></li>
+          <li><a href="#">Medical Store</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="teeth-whitening.html">Teeth Whitening</a></li>
+          <li><a href="implants.html">Dental Implants</a></li>
+          <li><a href="orthodontics.html">Orthodontics</a></li>
+          <li><a href="root-canal.html">Root Canal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-links-call">
+      <h4>Contact & Hours</h4>
+      <p><i class="fa-solid fa-phone"></i> +20 100 000 0000</p>
+      <p><i class="fa-solid fa-envelope"></i> hello@brightlinedental.com</p>
+      <p><i class="fa-solid fa-location-dot"></i> 15 Tahrir St, Cairo, Egypt</p>
+      <p><i class="fa-solid fa-clock"></i> Sat-Thu 9:00 AM - 8:00 PM</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 <span class="h-style">SmileCare.</span> All rights reserved.</p>
+    <div class="footer-last">
+      <span class="hover-word">Privacy Policy</span> <span class="hover-word">Terms of Use</span>
+    </div>
+  </div>
+</footer>
 
     <script src="scripts/bootstrap.bundle.min.js"></script>
-
-    <script src="scripts/navbar.js"></script>
-
     <script src="scripts/doctors.js"></script>
   </body>
 </html>
