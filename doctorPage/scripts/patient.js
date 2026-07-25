@@ -1,25 +1,18 @@
 document.addEventListener("DOMContentLoaded", init);
 
-async function init() {
-  let currentUser = null;
+function init() {
 
+  let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-  let appointments = [];
-
-  try {
-    const storedAppointments = localStorage.getItem("appointments");
-
-    if (storedAppointments) {
-      appointments = JSON.parse(storedAppointments);
-    }
-  } catch (error) {
-    console.error("Failed to load appointments", error);
+  if (!currentUser || currentUser.role != "patient") {
+    window.location.href = "login.html";
+    return;
   }
 
+  let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+
   renderProfile(currentUser);
-
   renderAppointments(currentUser, appointments);
-
   attachEvents(currentUser);
 }
 
@@ -109,8 +102,16 @@ function renderAppointments(user, appointments) {
   userAppointments.sort(function (a, b) {
     return new Date(a.date) - new Date(b.date);
   });
+  
+  let cartona = "";
 
-  container.innerHTML = userAppointments.map(createAppointmentCard).join("");
+for (let i = 0; i < userAppointments.length; i++) {
+
+  cartona += createAppointmentCard(userAppointments[i]);
+
+}
+
+container.innerHTML = cartona;
 }
 
 function createAppointmentCard(app) {
@@ -146,11 +147,7 @@ ${app.time || "N/A"}
 
 </div>
 
-<span class="badge ${getStatusClass(app.status)}">
 
-${app.status || "Upcoming"}
-
-</span>
 
 </div>
 
@@ -183,8 +180,11 @@ function attachEvents(user) {
   }
 
   container.addEventListener("click", function (event) {
-    const button = event.target.closest(".cancel-btn");
+    if (event.target.classList.contains("cancel-btn")) {
 
+    cancelAppointment(Number(event.target.dataset.id), user);
+
+    }
     if (!button) {
       return;
     }
@@ -204,37 +204,15 @@ function cancelAppointment(id, user) {
     }
   } catch (error) {
     console.error("Failed to load appointments", error);
-
     return;
   }
 
-  const appointment = appointments.find(function (item) {
-    return item.id === id;
+  appointments = appointments.filter(function (appointment) {
+    return appointment.id !== id;
   });
-
-  if (!appointment) {
-    return;
-  }
-
-  appointment.status = "Cancelled";
 
   localStorage.setItem("appointments", JSON.stringify(appointments));
 
   renderAppointments(user, appointments);
 }
 
-function getStatusClass(status) {
-  switch (status) {
-    case "Upcoming":
-      return "bg-primary";
-
-    case "Completed":
-      return "bg-success";
-
-    case "Cancelled":
-      return "bg-danger";
-
-    default:
-      return "bg-secondary";
-  }
-}

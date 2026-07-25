@@ -1,348 +1,208 @@
 let doctors = [];
 
-const elements = {
-  searchInput: document.querySelector("#searchInput"),
+let searchInput = document.getElementById("searchInput");
+let specializationFilter = document.getElementById("specializationFilter");
+let sortDoctors = document.getElementById("sortDoctors");
 
-  specializationFilter: document.querySelector("#specializationFilter"),
+let doctorList = document.getElementById("doctorList");
+let doctorCount = document.getElementById("doctorCount");
+let averageRating = document.getElementById("avgRatingText");
 
-  sortDoctors: document.querySelector("#sortDoctors"),
+let loadingState = document.getElementById("loadingState");
+let emptyState = document.getElementById("emptyState");
 
-  doctorList: document.querySelector("#doctorList"),
+function showLoading() {
+  loadingState.classList.remove("d-none");
+  doctorList.classList.add("d-none");
+  emptyState.classList.add("d-none");
+}
 
-  doctorCount: document.querySelector("#doctorCount"),
+function hideLoading() {
+  loadingState.classList.add("d-none");
+}
 
-  averageRating: document.querySelector("#avgRatingText"),
+function showEmptyState() {
+  emptyState.classList.remove("d-none");
+  doctorList.classList.add("d-none");
+}
 
-  loadingState: document.querySelector("#loadingState"),
+function showDoctors() {
+  emptyState.classList.add("d-none");
+  doctorList.classList.remove("d-none");
+}
 
-  emptyState: document.querySelector("#emptyState"),
-};
+function updateStatistics(list) {
+  doctorCount.textContent =
+    list.length + " Doctor" + (list.length != 1 ? "s" : "") + " Found";
 
-const showLoading = () => {
-  if (elements.loadingState) {
-    elements.loadingState.classList.remove("d-none");
-  }
-
-  if (elements.doctorList) {
-    elements.doctorList.classList.add("d-none");
-  }
-
-  if (elements.emptyState) {
-    elements.emptyState.classList.add("d-none");
-  }
-};
-
-const hideLoading = () => {
-  if (elements.loadingState) {
-    elements.loadingState.classList.add("d-none");
-  }
-};
-
-const showEmptyState = () => {
-  if (elements.emptyState) {
-    elements.emptyState.classList.remove("d-none");
-  }
-
-  if (elements.doctorList) {
-    elements.doctorList.classList.add("d-none");
-  }
-};
-
-const showDoctors = () => {
-  if (elements.emptyState) {
-    elements.emptyState.classList.add("d-none");
-  }
-
-  if (elements.doctorList) {
-    elements.doctorList.classList.remove("d-none");
-  }
-};
-
-const updateStatistics = (doctorList) => {
-  if (elements.doctorCount) {
-    elements.doctorCount.textContent = `${doctorList.length} Doctor${doctorList.length !== 1 ? "s" : ""} Found`;
-  }
-
-  if (!doctorList.length) {
-    if (elements.averageRating) {
-      elements.averageRating.textContent = "";
-    }
-
+  if (list.length == 0) {
+    averageRating.textContent = "";
     return;
   }
 
-  const totalRating = doctorList.reduce((sum, doctor) => {
-    return sum + Number(doctor.rating || 0);
-  }, 0);
+  let totalRating = 0;
 
-  const average = (totalRating / doctorList.length).toFixed(1);
-
-  if (elements.averageRating) {
-    elements.averageRating.textContent = `Average Rating ⭐ ${average}`;
+  for (let i = 0; i < list.length; i++) {
+    totalRating += Number(list[i].rating);
   }
-};
 
-const fetchDoctors = async () => {
+  let average = (totalRating / list.length).toFixed(1);
+
+  averageRating.textContent = "Average Rating ⭐ " + average;
+}
+
+async function fetchDoctors() {
   showLoading();
 
-  try {
-    const response = await fetch("./data/doctors.json");
+  const response = await fetch("./data/doctors.json");
 
-    if (!response.ok) {
-      throw new Error(`Status: ${response.status}`);
-    }
+  doctors = await response.json();
 
-    doctors = await response.json();
+  applyFilters();
 
-    applyFilters();
-  } catch (error) {
-    console.error("Doctors loading error:", error);
+  hideLoading();
+}
 
-    if (elements.loadingState) {
-      elements.loadingState.innerHTML = `
+function filterDoctors() {
+  let searchValue = searchInput.value.toLowerCase().trim();
 
-                <div class="alert alert-danger">
+  let specialization = specializationFilter.value;
 
-                    Failed to load doctors data.
+  let filteredDoctors = doctors.filter(function (doctor) {
+    let matchName = doctor.name.toLowerCase().includes(searchValue);
 
-                </div>
+    let matchSpecialization =
+      specialization == "" || doctor.specialization == specialization;
 
-            `;
-
-      elements.loadingState.classList.remove("d-none");
-    }
-  } finally {
-    hideLoading();
-  }
-};
-
-const filterDoctors = () => {
-  let searchValue = "";
-
-  let specialization = "";
-
-  if (elements.searchInput) {
-    searchValue = elements.searchInput.value.trim().toLowerCase();
-  }
-
-  if (elements.specializationFilter) {
-    specialization = elements.specializationFilter.value;
-  }
-
-  return doctors.filter((doctor) => {
-    const name = doctor.name ? doctor.name.toLowerCase() : "";
-
-    const matchesName = name.includes(searchValue);
-
-    const matchesSpecialization =
-      !specialization || doctor.specialization === specialization;
-
-    return matchesName && matchesSpecialization;
+    return matchName && matchSpecialization;
   });
-};
 
-const sortDoctorList = (doctorList) => {
-  const sortedDoctors = [...doctorList];
+  return filteredDoctors;
+}
 
-  let sortValue = "default";
+function sortDoctorList(list) {
+  let sortedDoctors = [...list];
 
-  if (elements.sortDoctors) {
-    sortValue = elements.sortDoctors.value;
-  }
-
-  if (sortValue === "rating-desc") {
-    sortedDoctors.sort((a, b) => {
-      return Number(b.rating) - Number(a.rating);
+  if (sortDoctors.value == "rating-desc") {
+    sortedDoctors.sort(function (a, b) {
+      return b.rating - a.rating;
     });
-  } else if (sortValue === "exp-desc") {
-    sortedDoctors.sort((a, b) => {
-      return Number(b.experience) - Number(a.experience);
+  } else if (sortDoctors.value == "exp-desc") {
+    sortedDoctors.sort(function (a, b) {
+      return b.experience - a.experience;
     });
   } else {
-    sortedDoctors.sort((a, b) => {
+    sortedDoctors.sort(function (a, b) {
       return a.id - b.id;
     });
   }
 
   return sortedDoctors;
-};
+}
 
-const createDoctorCard = (doctor) => {
-  const { id, name, specialization, rating, experience, biography, image } =
-    doctor;
-
+function createDoctorCard(doctor) {
   return `
-
-
     <div class="col-md-6 col-lg-4">
 
+      <article class="card h-100 shadow-sm border-0 doctor-card">
 
-        <article class="card h-100 shadow-sm border-0 doctor-card">
+        <div class="card-body text-center">
 
+          <img
+            src="${doctor.image || "images/default-avatar.png"}"
+            class="doctor-img rounded-circle mb-3"
+            alt="${doctor.name}">
 
-            <div class="card-body text-center">
+          <h3 class="h5 fw-bold">${doctor.name}</h3>
 
+          <p class="text-primary fw-semibold">
+            ${doctor.specialization}
+          </p>
 
-                <img
-                    src="${image || "images/default-avatar.png"}"
-                    alt="Photo of ${name}"
-                    class="doctor-img rounded-circle mb-3"
-                    width="120"
-                    height="120"
-                    loading="lazy">
+          <p class="text-muted small">
+            ${doctor.biography || "No biography available."}
+          </p>
 
+          <div class="d-flex justify-content-center gap-3 mb-3">
 
+            <span>
+              <i class="fa-solid fa-star text-warning"></i>
+              ${doctor.rating}
+            </span>
 
-                <h3 class="h5 fw-bold">
+            <span>
+              <i class="fa-solid fa-briefcase text-primary"></i>
+              ${doctor.experience} Years
+            </span>
 
-                    ${name}
+          </div>
 
-                </h3>
+          <div class="d-flex flex-column gap-2">
 
+            <a
+              href="doctor-profile.html?id=${doctor.id}"
+              class="btn btn-outline-primary">
 
+              View Profile
 
+            </a>
 
-                <p class="text-primary fw-semibold">
+            <button class="btn btn-primary book-btn">
 
-                    ${specialization}
+              Book Appointment
 
-                </p>
+            </button>
 
+          </div>
 
+        </div>
 
-
-
-                <p class="text-muted small">
-
-                    ${biography || "No biography available."}
-
-                </p>
-
-
-
-
-
-               <div class="d-flex justify-content-center gap-3 mb-3">
-
-
-                <span>
-                    <i class="fa-solid fa-star text-warning me-1"
-                    aria-hidden="true"></i>
-
-                    ${rating}
-                </span>
-
-
-
-                <span>
-                    <i class="fa-solid fa-briefcase text-primary me-1"
-                    aria-hidden="true"></i>
-
-                    ${experience} Years
-                </span>
-
-
-
-                </div>
-
-
-
-
-
-                <div class="d-flex flex-column gap-2">
-
-
-
-                    <a
-                      href="doctor-profile.html?id=${id}"
-                      class="btn btn-outline-primary">
-
-
-                        View Profile
-
-
-                    </a>
-
-
-
-
-
-
-                    <a
-                      href="appointment.html"
-                      class="btn btn-primary">
-
-
-                        Book Appointment
-
-
-                    </a>
-
-
-
-
-                </div>
-
-
-
-            </div>
-
-
-        </article>
-
+      </article>
 
     </div>
+  `;
+}
 
+function renderDoctors(list) {
+  updateStatistics(list);
 
-    `;
-};
-
-const renderDoctors = (doctorList) => {
-  updateStatistics(doctorList);
-
-  if (!doctorList.length) {
+  if (list.length == 0) {
     showEmptyState();
-
-    if (elements.doctorList) {
-      elements.doctorList.innerHTML = "";
-    }
-
+    doctorList.innerHTML = "";
     return;
   }
 
   showDoctors();
 
-  if (elements.doctorList) {
-    elements.doctorList.innerHTML = doctorList.map(createDoctorCard).join("");
-  }
-};
+  let cards = "";
 
-const applyFilters = () => {
-  const filtered = filterDoctors();
-
-  const sorted = sortDoctorList(filtered);
-
-  renderDoctors(sorted);
-};
-
-const setupEventListeners = () => {
-  if (elements.searchInput) {
-    elements.searchInput.addEventListener("input", applyFilters);
+  for (let i = 0; i < list.length; i++) {
+    cards += createDoctorCard(list[i]);
   }
 
-  if (elements.specializationFilter) {
-    elements.specializationFilter.addEventListener("change", applyFilters);
-  }
+  doctorList.innerHTML = cards;
+}
 
-  if (elements.sortDoctors) {
-    elements.sortDoctors.addEventListener("change", applyFilters);
-  }
-};
+function applyFilters() {
+  let filteredDoctors = filterDoctors();
 
-const init = async () => {
+  let sortedDoctors = sortDoctorList(filteredDoctors);
+
+  renderDoctors(sortedDoctors);
+}
+
+function setupEventListeners() {
+  searchInput.addEventListener("input", applyFilters);
+
+  specializationFilter.addEventListener("change", applyFilters);
+
+  sortDoctors.addEventListener("change", applyFilters);
+}
+
+async function init() {
   setupEventListeners();
 
   await fetchDoctors();
-};
+}
 
 document.addEventListener("DOMContentLoaded", init);
