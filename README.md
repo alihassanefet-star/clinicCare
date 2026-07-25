@@ -31,6 +31,7 @@ SmileCare is a front-end web application designed for a dental clinic. It provid
 - Font Awesome
 - JSON
 - Local Storage
+- fetch api
   
 
 ---
