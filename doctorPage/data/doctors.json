@@ -11,22 +11,8 @@
       "Orthodontics",
       "Clear Aligners (Invisalign)",
       "Retainers & Jaw Realignment"
-    ],
-    "qualifications": [
-      "B.D.S. Degree in Oral and Dental Surgery",
-      "Master’s Degree in Orthodontics & Dentofacial Orthopedics",
-      "Member of the World Federation of Orthodontists (WFO)"
-    ],
-    "certificates": [
-      "Invisalign Provider Certification",
-      "Advanced Micro-Implant Anchorage Certificate"
-    ],
-    "beforeAfterImages": [
-      "images/BeforeAfter/Orthodontist.png",
-      "images/BeforeAfter/Orthodontist1.png"
-    ],
-    "availableDays": "Saturday, Monday, Wednesday",
-    "workingHours": "9:00 AM - 3:00 PM"
+    ]
+   
   },
 
   {
@@ -41,17 +27,7 @@
       "Dental Checkup & Cleaning",
       "Fluoride Treatment",
       "Preventive Oral Care"
-    ],
-    "qualifications": [
-      "B.D.S. Degree in Dental Surgery",
-      "Diploma in Preventive Dentistry"
-    ],
-    "certificates": [
-      "Certified Dental Infection Control Specialist"
-    ],
-    "beforeAfterImages": [],
-    "availableDays": "Saturday - Thursday",
-    "workingHours": "9:00 AM - 2:00 PM"
+    ]
   },
 
   {
@@ -66,20 +42,7 @@
       "Dental Fillings",
       "Dental Crowns & Bridges",
       "Tooth Reconstruction"
-    ],
-    "qualifications": [
-      "B.D.S. Degree in Dental Surgery",
-      "Master's Degree in Operative & Restorative Dentistry"
-    ],
-    "certificates": [
-      "Direct & Indirect Composite Restoration Masterclass"
-    ],
-    "beforeAfterImages": [
-      "images/BeforeAfter/RestorativeDentist.png",
-      "images/BeforeAfter/RestorativeDentist1.png"
-    ],
-    "availableDays": "Sunday, Tuesday, Thursday",
-    "workingHours": "12:00 PM - 6:00 PM"
+    ]
   },
 
   {
@@ -94,19 +57,7 @@
       "Root Canal Treatment",
       "Emergency Dental Care",
       "Tooth Pain Diagnosis"
-    ],
-    "qualifications": [
-      "B.D.S. Degree in Dental Surgery",
-      "Master's Degree in Endodontics"
-    ],
-    "certificates": [
-      "Microscopic Root Canal Therapy Certification"
-    ],
-    "beforeAfterImages": [
-      "images/BeforeAfter/Endodontist.png"
-    ],
-    "availableDays": "Saturday, Monday, Thursday",
-    "workingHours": "2:00 PM - 8:00 PM"
+    ]
   },
 
   {
@@ -121,19 +72,7 @@
       "Dental Implants",
       "Bone Grafting",
       "All-on-4 Tooth Replacement"
-    ],
-    "qualifications": [
-      "B.D.S. Degree in Oral Surgery"
-    ],
-    "certificates": [
-      "Guided Bone Regeneration Certification"
-    ],
-    "beforeAfterImages": [
-      "images/BeforeAfter/Implantologist.png",
-      "images/BeforeAfter/Implantologist1.png"
-    ],
-    "availableDays": "Sunday, Wednesday",
-    "workingHours": "10:00 AM - 5:00 PM"
+    ]
   },
 
   {
@@ -148,21 +87,7 @@
       "Teeth Whitening",
       "Porcelain Veneers",
       "Hollywood Smile Makeover"
-    ],
-    "qualifications": [
-      "B.D.S. Degree in Oral & Dental Medicine",
-      "Postgraduate Diploma in Aesthetic Dentistry"
-    ],
-    "certificates": [
-      "Digital Smile Design (DSD) Certified Master",
-      "Porcelain Veneers Advanced Techniques"
-    ],
-    "beforeAfterImages": [
-      "images/BeforeAfter/CosmeticDentist.png",
-      "images/BeforeAfter/CosmeticDentist1.png"
-    ],
-    "availableDays": "Saturday, Tuesday, Wednesday",
-    "workingHours": "3:00 PM - 8:00 PM"
+    ]
   },
 
   {
@@ -177,20 +102,6 @@
       "Tooth Extraction",
       "Wisdom Tooth Surgery",
       "Jaw Surgery"
-    ],
-    "qualifications": [
-      "B.D.S. Degree in Oral Surgery",
-      "Residency in Oral and Maxillofacial Surgery"
-    ],
-    "certificates": [
-      "Surgical Extractions & Bone Grafting Specialist",
-      "Sedation Dentistry & Patient Care Certificate"
-    ],
-    "beforeAfterImages": [
-      "images/BeforeAfter/OralSurgeon.png",
-      "images/BeforeAfter/OralSurgeon2.png"
-    ],
-    "availableDays": "Monday, Thursday",
-    "workingHours": "11:00 AM - 6:00 PM"
+    ]
   }
 ]
