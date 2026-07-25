@@ -139,13 +139,7 @@ function createDoctorCard(doctor) {
 
           <div class="d-flex flex-column gap-2">
 
-            <a
-              href="doctor-profile.html?id=${doctor.id}"
-              class="btn btn-outline-primary">
-
-              View Profile
-
-            </a>
+           
 
          
           </div>
