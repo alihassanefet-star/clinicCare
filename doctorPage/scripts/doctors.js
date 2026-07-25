@@ -147,11 +147,13 @@ function createDoctorCard(doctor) {
 
             </a>
 
-            <button class="btn btn-primary book-btn">
+            <a
+              href="../appointment/appointment.html?doctorId=${doctor.id}"
+              class="btn btn-primary book-btn">
 
               Book Appointment
 
-            </button>
+            </a>
 
           </div>
 

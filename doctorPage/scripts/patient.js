@@ -5,7 +5,7 @@ function init() {
   let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   if (!currentUser || currentUser.role != "patient") {
-    window.location.href = "login.html";
+    window.location.href = "../aboutPage/login.html";
     return;
   }
 

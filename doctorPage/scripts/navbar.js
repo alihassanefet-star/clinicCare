@@ -109,9 +109,6 @@ function updateFooterYear() {
   }
 }
 
-// ===============================
-// Protected Booking Buttons
-// ===============================
 
 function setupProtectedBookingButtons() {
   const bookingButtons = document.querySelectorAll(".book-btn");
@@ -123,9 +120,9 @@ function setupProtectedBookingButtons() {
       const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
       if (currentUser) {
-        window.location.href = "appointment.html";
+        window.location.href = "../appointment/appointment.html";
       } else {
-        window.location.href = "login.html";
+        window.location.href = "../aboutPage/login.html";
       }
     });
   });

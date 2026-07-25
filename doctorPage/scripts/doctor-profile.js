@@ -289,7 +289,7 @@ function initializeBookButton() {
 
     button.addEventListener("click", function () {
 
-        window.location.href = "appointment.html";
+        window.location.href = "../appointment/appointment.html";
 
     });
 
